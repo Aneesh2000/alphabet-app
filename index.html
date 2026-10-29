@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#ffd84d">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ABC Owl">
+  <title>ABC Owl</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- Start: pick a player. The tap also unlocks audio (required on iOS). -->
+    <section id="screen-start" class="screen active">
+      <button id="btn-parent" class="parent-btn" aria-label="Grown-ups: hold for 3 seconds">⚙️</button>
+      <div class="mascot big">🦉</div>
+      <h1 class="title"><span>A</span><span>B</span><span>C</span></h1>
+      <div id="profiles" class="profiles"></div>
+      <p class="hint-text">Tap to play</p>
+    </section>
+
+    <!-- Play: one question at a time -->
+    <section id="screen-play" class="screen">
+      <header class="topbar">
+        <button id="btn-home" class="icon-btn" aria-label="Home">🏠</button>
+        <div id="dots" class="dots"></div>
+        <div id="counter" class="counter">
+          <div>⭐ <span id="star-count">0</span> ✨ <span id="sparkle-count">0</span></div>
+          <div class="sticker-progress" aria-hidden="true"><div id="sticker-bar"></div></div>
+        </div>
+      </header>
+      <div class="mascot-row">
+        <div id="mascot" class="mascot">🦉</div>
+        <div id="bubble" class="bubble"></div>
+        <button id="btn-replay" class="icon-btn replay" aria-label="Hear again">🔊</button>
+      </div>
+      <div class="stage">
+        <div id="tiles" class="tiles"></div>
+        <div id="example" class="example hidden">
+          <div id="example-emoji" class="example-emoji"></div>
+          <div id="example-word" class="example-word"></div>
+        </div>
+      </div>
+      <div class="next-slot"><button id="btn-next" class="next-btn hidden" aria-label="Next">➜</button></div>
+    </section>
+
+    <!-- End of a short round -->
+    <section id="screen-end" class="screen">
+      <div class="mascot big bounce">🦉</div>
+      <h2 class="title small">Great job!</h2>
+      <div id="end-stars" class="end-stars"></div>
+      <div class="end-buttons">
+        <button id="btn-again" class="big-btn go" aria-label="Play again">▶</button>
+        <button id="btn-book" class="big-btn" aria-label="My stickers">📒</button>
+        <button id="btn-end-home" class="big-btn" aria-label="Home">🏠</button>
+      </div>
+    </section>
+
+    <!-- Sticker book -->
+    <section id="screen-stickers" class="screen">
+      <header class="topbar">
+        <button id="btn-stickers-back" class="icon-btn" aria-label="Back">⬅️</button>
+        <h2 class="book-title">📒</h2>
+        <span class="icon-spacer"></span>
+      </header>
+      <div id="sticker-book" class="sticker-book"></div>
+    </section>
+
+    <!-- Grown-ups panel (behind a 3-second hold) -->
+    <section id="screen-parent" class="screen parent">
+      <h2>Grown-ups</h2>
+      <label>Letter order
+        <select id="set-order">
+          <option value="az">A to Z</option>
+          <option value="phonics">Phonics order (S A T I P N …)</option>
+        </select>
+      </label>
+      <label>Voice accent
+        <select id="set-accent">
+          <option value="en-US">US English (“zee”)</option>
+          <option value="en-GB">UK English (“zed”)</option>
+          <option value="en-IN">Indian English (“zed”)</option>
+        </select>
+      </label>
+      <button id="btn-test-voice" class="plain-btn">🔊 Test voice</button>
+      <p id="voice-info" class="note"></p>
+      <h3>Players</h3>
+      <div id="parent-profiles"></div>
+      <p id="storage-note" class="note"></p>
+      <p class="note">Progress is stored only on this device. Nothing is sent anywhere.</p>
+      <button id="btn-parent-close" class="plain-btn primary">Done</button>
+    </section>
+  </div>
+
+  <div id="overlay-sticker" class="overlay hidden">
+    <div class="overlay-card">
+      <div id="sticker-new" class="sticker-new"></div>
+      <p>New sticker!</p>
+    </div>
+  </div>
+  <div id="confetti" class="confetti-layer" aria-hidden="true"></div>
+  <div id="sound-warning" class="sound-warning hidden" title="Sound is not available">🔇</div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/speech.js"></script>
+  <script src="js/sfx.js"></script>
+  <script src="js/rewards.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
