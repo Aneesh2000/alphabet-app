@@ -17,6 +17,9 @@ A letter-learning game for young children. The app speaks a letter ("Find the le
 | Test on a phone | Deploy to any static HTTPS host (GitHub Pages, Netlify, Vercel, Cloudflare Pages). Service workers need **HTTPS**; plain `http://<laptop-ip>` on a phone will run the game but won't work offline. |
 | Install as an app | In the phone browser: Share → *Add to Home Screen* (iOS) or menu → *Install app* (Android). |
 | Engine simulation | `node tests/engine-sim.js` |
+| Browser end-to-end test | `node tests/e2e.js [baseUrl]` (setup in the skill file below) |
+
+Working on this repo with Claude Code? The project skill [`.claude/skills/abc-owl/SKILL.md`](.claude/skills/abc-owl/SKILL.md) summarizes how to run, test, change, and release the app.
 
 ---
 
